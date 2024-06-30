@@ -1,0 +1,166 @@
+openapi: 3.0.0
+info:
+  title: SmileCenters API
+  version: 1.0.0
+  description: API para obtener información de SmileCenters.
+
+servers:
+  - url: https://parseapi.back4app.com
+
+paths:
+  /classes/SmileCenters:
+    get:
+      summary: Obtener SmileCenters por tipo de centro
+      description: |
+        Este endpoint obtiene los SmileCenters que coinciden con el tipo de centro especificado.
+      parameters:
+        - in: header
+          name: X-Parse-Application-Id
+          required: true
+          schema:
+            type: string
+          example: iQEMmYgOkkC2AvNteq0RPxxy5F1UBDXkWMG8cn2p
+          description: ID de la aplicación Parse.
+        - in: header
+          name: X-Parse-REST-API-Key
+          required: true
+          schema:
+            type: string
+          example: ivpcDJPQf0OOle3eQdssULJDnsKKZLWpFMZfCk0a
+          description: Clave de la API REST de Parse.
+        - in: query
+          name: where
+          required: true
+          schema:
+            type: string
+          example: '{"Center_Type": "Centro Aliado"}'
+          description: Filtro para el tipo de centro.
+      responses:
+        "200":
+          description: Lista de SmileCenters que coinciden con el filtro.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        Appointment_Type_Id:
+                          type: string
+                        Timetable:
+                          type: object
+                          properties:
+                            weekdays:
+                              type: array
+                              items:
+                                type: string
+                            saturday:
+                              type: array
+                              items:
+                                type: string
+                        Notes:
+                          type: string
+                        Zip:
+                          type: string
+                        Moons_Center:
+                          type: string
+                        Street:
+                          type: string
+                        Center_Type:
+                          type: string
+                        Apt:
+                          type: string
+                        Active:
+                          type: boolean
+                        Partner:
+                          type: string
+                        List_Price:
+                          type: number
+                        Number:
+                          type: string
+                        ACL:
+                          type: string
+                        City:
+                          type: string
+                        Latitude:
+                          type: number
+                        Zone:
+                          type: string
+                        Map_URL:
+                          type: string
+                        Appointment_Cost:
+                          type: number
+                        Prev_Videocall:
+                          type: boolean
+                        Phone:
+                          type: string
+                        Order:
+                          type: number
+                        Neighborhood:
+                          type: string
+                        promo:
+                          type: string
+                        Longitude:
+                          type: number
+                        Currency:
+                          type: string
+                        State:
+                          type: string
+                        Place_Id:
+                          type: string
+                        Region:
+                          type: string
+                        Center_Name:
+                          type: string
+                        Calendar_Id:
+                          type: string
+                        Country:
+                          type: string
+                        totalReviews:
+                          type: number
+                        Map_Image:
+                          type: string
+                        embed:
+                          type: string
+                        Appointment_Type:
+                          type: string
+                        extractReviews:
+                          type: boolean
+                        reviews:
+                          type: array
+                          items:
+                            type: string
+                        Center_Desc:
+                          type: string
+                        rating:
+                          type: number
+                        Appointment_Calendar:
+                          type: string
+                        Services:
+                          type: object
+                          additionalProperties:
+                            type: object
+                            properties:
+                              productId:
+                                type: string
+                              AppointmentTypeId:
+                                type: string
+                        retailApp:
+                          type: boolean
+                        mergeCalendars:
+                          type: boolean
+                        Delete:
+                          type: boolean
+                        whatsAppLink:
+                          type: string
+                        whatsAppCall:
+                          type: string
+        "400":
+          description: Solicitud incorrecta.
+        "401":
+          description: No autorizado. Verifique las credenciales.
+        "500":
+          description: Error interno del servidor.
