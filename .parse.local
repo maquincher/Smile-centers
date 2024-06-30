@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "Smile centers": {
+      "applicationId": "iQEMmYgOkkC2AvNteq0RPxxy5F1UBDXkWMG8cn2p"
+    },
+    "_default": {
+      "link": "Smile centers"
+    }
+  }
+}
